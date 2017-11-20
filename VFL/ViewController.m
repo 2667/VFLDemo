@@ -25,6 +25,8 @@
     //（4）“@”表示优先级
     // (5) VFL语法适配分为横向和垂直方向,对两个方向分别考虑,两个方向上互不影响,各自管各自的
     //创建子视图(这里以button为例,只做个演示,没给方法,也可以是view)
+    //声明一个常量
+    CGFloat  qtt = 0;
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.backgroundColor = [UIColor redColor];
     [self.view addSubview:leftButton];

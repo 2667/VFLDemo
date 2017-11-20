@@ -27,6 +27,7 @@
     //创建子视图(这里以button为例,只做个演示,没给方法,也可以是view)
     //声明一个常量
     CGFloat  qtt = 0;
+    NSLog(@"%lf",qtt);
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.backgroundColor = [UIColor redColor];
     [self.view addSubview:leftButton];

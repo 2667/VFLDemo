@@ -16,7 +16,43 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpView3];
+//    [self setUpView3];
+    [self cutString];
+
+}
+
+
+-(void)cutString {
+//    NSString *originalStirng = @"abcdefg";
+//    NSString *string1 = [originalStirng substringFromIndex:3];
+//    NSLog(@"string1 neiron:\n%@",string1);
+//
+//    NSString *string2 = [originalStirng substringToIndex:3];
+//    NSLog(@"string2 neiron:\n%@",string2);
+//    NSRange rang = NSMakeRange(3, 3);
+//    NSString *string3 = [originalStirng substringWithRange:rang];
+//    NSLog(@"string3 neiron:\n%@",string3);
+
+    //2.
+//    NSString *str = nil;
+//    // 把后面需要加密的字段转成json
+//    NSDictionary* parmDictionary = @{@"uuid":@"sddsf",
+//                                     @"extras":@"",@"extras2":str
+//                                     };
+//    NSLog(@"parmDictionary neiron%@",parmDictionary);
+    
+    
+    NSString *testString = @"sdfsdfgf36ghjkm";
+    //被拼接的字符串为空
+//    NSString *serviceEmail = @"";
+//被拼接的字符串为nil
+    NSString *serviceEmail = nil;
+    if (serviceEmail != nil) {
+        NSString *string2 = [testString stringByAppendingString:serviceEmail];
+        NSLog(@"string2 canshu neiron%@",string2);
+
+    }
+    
 }
 
 -(void)setUpView3 {
@@ -62,7 +98,6 @@
     [self.view addConstraints:constraints5];
 
     
-    
     UIButton *registBtn = [[UIButton alloc] init];
     [registBtn setTitle:@"注册" forState:UIControlStateNormal];
     [registBtn setTintColor:[UIColor redColor]];
@@ -81,6 +116,67 @@
     NSArray *constraints7 = [NSLayoutConstraint constraintsWithVisualFormat:vf6 options:kNilOptions metrics:mertrics views:views3];
     [self.view addConstraints:constraints7];
     
+    
+    //创建一个按钮与superview中心对齐
+    UIButton *middleBtn = [[UIButton alloc] init];
+    [middleBtn setTitle:@"注册" forState:UIControlStateNormal];
+    [middleBtn setTintColor:[UIColor redColor]];
+    middleBtn.backgroundColor = [UIColor blueColor];
+    // 不要将AutoresizingMask转为Autolayout的约束
+    middleBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:middleBtn];
+    //    //添加水平方向的间距
+    NSString *vf7 = @"H:[middleBtn(80)]";
+    NSString *vf8 = @"V:[registBtn]-60-[middleBtn(40)]";
+    NSDictionary *views4 = NSDictionaryOfVariableBindings(registBtn, middleBtn);
+    NSDictionary *views5 = NSDictionaryOfVariableBindings(middleBtn,self);
+
+    NSArray *constraints8 = [NSLayoutConstraint constraintsWithVisualFormat:vf7 options:NSLayoutFormatAlignAllCenterX metrics:mertrics views:views5];
+    [self.view addConstraints:constraints8];
+    
+    NSArray *constraints9 = [NSLayoutConstraint constraintsWithVisualFormat:vf8 options:kNilOptions metrics:mertrics views:views4];
+    [self.view addConstraints:constraints9];
+    
+    
+    //////////
+//    UIActivityIndicatorView* prgrssView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+//    prgrssView.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self.view addSubview:prgrssView];
+//
+//    NSDictionary* views20 = NSDictionaryOfVariableBindings(prgrssView);
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[prgrssView]-|" options:NSLayoutFormatAlignAllCenterX metrics:kNilOptions views:views20]];
+////    上面的代码可以让prgrssView 水平居中。垂直代码如下
+//
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[prgrssView]-|" options:NSLayoutFormatAlignAllCenterY metrics:kNilOptions views:views20]];
+//    以上代码测试下来只对UIActivityIndicatorView有效，如果一个view有宽度和高度则上面的居中代码会报错。可以通过另一种方式来处理，具体代码如下
+    
+    //beging
+    UIImageView* imagevew = [[UIImageView alloc]init];
+    [imagevew setContentMode:UIViewContentModeScaleToFill];
+    [imagevew setBackgroundColor:[UIColor redColor]];
+    imagevew.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:imagevew];
+
+
+    NSDictionary* views21 = NSDictionaryOfVariableBindings(imagevew);
+
+    NSString *vf10 = @"H:[imagevew(60)]";
+    NSString *vf11 = @"V:|-[imagevew(60)]";
+    NSArray *constraints13 = [NSLayoutConstraint constraintsWithVisualFormat:vf10 options:kNilOptions metrics:mertrics views:views21];
+      NSArray *constraints14 = [NSLayoutConstraint constraintsWithVisualFormat:vf11 options:kNilOptions metrics:mertrics views:views21];
+    [self.view addConstraints:constraints13];
+    [self.view addConstraints:constraints14];
+
+    //设置高度
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[imagevew(60)]" options:kNilOptions metrics:nil views:views21]];
+//    //设置宽度
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[imagevew(60)]" options:kNilOptions metrics:nil views:views21]];
+    //垂直居中
+//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:imagevew attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1 constant:0]];
+//    //水平居中
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:imagevew attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1 constant:0]];
+    //end
+//    这样就设置了一个imageview其大小为60*60 在整个视图中居中。
 }
 
 -(void)setUpView1{
